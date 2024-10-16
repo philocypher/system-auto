@@ -58,7 +58,6 @@ class App:
         parser.add_argument('-p','--path',help='Path to check the disk free space.')
         parser.add_argument('-a','--all',help='If set, all CPU cores will be checked.')
         args = parser.parse_args()
-
         # Executing the tasks
         # if args are passed.
         if args.path != None:

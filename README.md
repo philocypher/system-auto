@@ -1,2 +1,10 @@
-# system-auto
-System automation project where checks, and services are initialized system monitoring and health checks.
+## system-auto
+
+#### Making Troubleshooting easier.
+- Hardware Checks.
+- Operating System checks.
+- Network checks.
+- Configurations checks.
+- Disk checks.
+
+#### Reporting

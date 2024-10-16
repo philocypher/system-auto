@@ -1,5 +1,3 @@
-## system-auto
-
 #### Making Troubleshooting easier.
 - Hardware Checks.
 - Operating System checks.
@@ -7,4 +5,5 @@
 - Configurations checks.
 - Disk checks.
 
-#### Reporting
+#### Reporting formats.
+- *In progress*

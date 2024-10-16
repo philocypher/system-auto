@@ -12,7 +12,7 @@ import health_checks
 import time
 import rich
 from rich.progress import Progress
-## OS name and version
+
 """ a module that checks, Memory utilization, Disk usage, CPU usage, and if a reboot is required for alinux system """
 
 def system_info():
@@ -41,9 +41,8 @@ def reboot_check():
     latest = ".".join([str(x) for x in last])
 
 if __name__ == "__main__":
-
     tasks = [
-            {health_checks.App.init:f'{"-" * 20} SYSTEM HEALTH CHECKS {"-" * 20}'},
+            {health_checks.App.init:f''},
             {reboot_check:f'{"-" * 20} REBOOT CHECK {"-" * 20}'},
             {system_info:f'{"-" * 20} Platform Information{"-" * 20}'}
     ]

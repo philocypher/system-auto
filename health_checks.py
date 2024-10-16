@@ -12,9 +12,15 @@ def check_disk(path='/'):
     Takes in a parameter 'path' to the disk.
     '''
     try:
-        disk_use = shutil.disk_usage(path)
-        free_disk = disk_use.free / disk_use.total
+        du = shutil.disk_usage(path)
+        free_disk = du.free / du.total
+        free_in_gb = du.free / 2**30
+        free_in_gb = round(free_in_gb)
+        free_percentage = round(du.free / du.total * 100)
+        total_disk_space = round(du.total / 2**30)
+        print(f"--------- DISK STATS ---------")
         print(f"Disk Usage: {free_disk:.2%} is free")
+        print(f"Free Disk Space: {free_in_gb}GB, %{free_percentage} of Total {total_disk_space}GB space used.")
         if (free_disk * 100) < 20:
             print(f" Disk free space is low!")
     except TypeError:
@@ -61,7 +67,7 @@ class App:
         else:
             check_disk()
         # if intervals and percpu are provided.
-        if args.all is not '' and args.intervals is not None:
+        if args.all != '' and args.intervals != None:
             cpu_usage(int(args.intervals),True)
         else:
             cpu_usage()

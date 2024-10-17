@@ -1,7 +1,5 @@
 #! /usr/bin/env python3
-
 """ Script to detect the operating system and its information """
-
 import platform
 import sys
 import platform

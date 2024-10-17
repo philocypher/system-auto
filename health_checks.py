@@ -2,7 +2,6 @@
 # Chceking System and computer health.
 import shutil
 import argparse
-
 #Third-party imports.
 import psutil
 
@@ -18,8 +17,8 @@ def check_disk(path='/'):
         free_in_gb = round(free_in_gb)
         free_percentage = round(du.free / du.total * 100)
         total_disk_space = round(du.total / 2**30)
+        print("-------- Memory Usage ------")
         print(f"--------- DISK STATS ---------")
-        print(f"Disk Usage: {free_disk:.2%} is free")
         print(f"Free Disk Space: {free_in_gb}GB, %{free_percentage} of Total {total_disk_space}GB space used.")
         if (free_disk * 100) < 20:
             print(f" Disk free space is low!")
@@ -31,6 +30,7 @@ def cpu_usage(interval=None, percpu=False):
     checks for cpu utilization in intervals.
     Takes in two parameters, intervals & percpu to check a single or all cpus.
     """
+    print("------- CPU USAGE -------")
     if percpu is True and interval is not None:
         for _ in range(10):
             print('Each CPU Util per interval:',psutil.cpu_percent(interval=interval,percpu=True))

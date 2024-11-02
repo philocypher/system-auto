@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 """ Script to detect the operating system and its information """
+import argparse
 import platform
 import sys
 import platform
@@ -7,16 +8,14 @@ import glob
 import re
 import subprocess
 import health_checks
-import time
-import rich
-from rich.progress import Progress
+import network_diagnose as nd
 
 """ a module that checks, Memory utilization, Disk usage, CPU usage, and if a reboot is required for alinux system """
 
 def system_info():
     info = platform.freedesktop_os_release()
     for key, val in info.items():
-        rich.print(f"{key:>31} {"->|":4}{val}")
+        print(f"{key:>31} {"->|":4}{val}")
     return info["ID"]
 
 def reboot_check():
@@ -39,15 +38,14 @@ def reboot_check():
     latest = ".".join([str(x) for x in last])
 
 if __name__ == "__main__":
+    parser =argparse.ArgumentParser(description='System monitoring and performance reporting')
+    parser.add_argument('-p','--perf',)
     tasks = [
             {health_checks.App.init:f''},
             {reboot_check:f'{"-" * 20} REBOOT CHECK {"-" * 20}'},
             {system_info:f'{"-" * 20} Platform Information{"-" * 20}'}
     ]
-    with Progress() as progress:
-        bar = progress.add_task("[blue] Progress", total=len(tasks),start=True)
-        for task in tasks:
+    for task in tasks:
             for check, msg in task.items():
                 print(msg)
                 check()
-                progress.update(bar, advance=1)

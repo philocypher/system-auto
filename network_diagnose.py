@@ -79,8 +79,8 @@ def monitor_network(interface, write_into_file=False):
             # print(f"Interface: {interface} ,Bytes Sent: {bytes_sent / (1024 * 1024)} MB/s, Bytes Received: {bytes_recv / (1024 * 1024)} MB/s")
             name = psutil.Process(conn.pid)
             print(f"PID: {conn.pid}, Name: {name.name()}")
-            print(f"Family address: {conn.family.}\nLocal Address: {conn.laddr} \nRemote Address: {conn.raddr}")
-            print(f"Connection Type{conn.type}")
+            print(f"Family address: {conn.family}\nLocal Address & PORT: {conn.laddr.ip}:{conn.laddr.port} \nRemote Address & PORT: {conn.raddr.ip}:{conn.raddr.port}")
+            print(f"Connection Type{conn.type.value}")
 
         # for conn in net_connections:
         #     pid[f'{conn.pid}'] = {}

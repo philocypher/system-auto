@@ -17,7 +17,6 @@ def check_disk(path='/'):
         free_in_gb = round(free_in_gb)
         free_percentage = round(du.free / du.total * 100)
         total_disk_space = round(du.total / 2**30)
-        print("-------- Memory Usage ------")
         print(f"--------- DISK STATS ---------")
         print(f"Free Disk Space: {free_in_gb}GB, %{free_percentage} of Total {total_disk_space}GB space used.")
         if (free_disk * 100) < 20:
@@ -43,8 +42,8 @@ def cpu_usage(interval=None, percpu=False):
         if cpu > 75:
             print(f"Warnning! {cpu}% \n CPU Usage is High!")
         else:
-            for _ in range(5):
-                print(f"CPU Utilization in five intervals of 1 sec: {psutil.cpu_percent(1)}%")
+            for _ in range(3):
+                print(f"CPU Utilization in five intervals of 1 sec: {psutil.cpu_percent(1,percpu=True)}%")
 
 class App:
     '''

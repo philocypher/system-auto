@@ -1,8 +1,8 @@
-import psutil
 import platform
 import time
 import os
 import socket
+import psutil
 
 # Function to get CPU usage
 def get_cpu_usage():
@@ -74,8 +74,6 @@ while True:
     # Get network statistics
     bytes_sent, bytes_recv, packets_sent, packets_recv = get_network_stats()
     display_network_stats(bytes_sent, bytes_recv, packets_sent, packets_recv)
-
-
 
     # Sleep for 1 second before next update
     time.sleep(1)

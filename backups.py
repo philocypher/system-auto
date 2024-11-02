@@ -18,7 +18,6 @@ def run(folder):
 #       print(folder)
         subprocess.call(["rsync", "-arqh", src + folder, dest])
 
-
 class App:
     @staticmethod
     def init():
